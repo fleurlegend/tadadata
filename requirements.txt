@@ -10,7 +10,7 @@ pandas==0.23.3
 plotly==3.0.2
 python-dateutil==2.7.3
 urllib3==1.23
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 Flask==1.0.2
 Flask-Compress==1.4.0
 Flask-SeaSurf==0.2.2

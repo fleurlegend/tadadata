@@ -1,1 +1,13 @@
 gunicorn==19.7.1
+dash==0.21.1
+dash-auth==1.0.2
+dash-core-components==0.25.1
+dash-html-components==0.11.0
+dash-renderer==0.13.0
+dash-table-experiments==0.6.0
+numpy==1.14.5
+pandas==0.23.3
+plotly==3.0.2
+python-dateutil==2.7.3
+urllib3==1.23
+Werkzeug==0.14.1

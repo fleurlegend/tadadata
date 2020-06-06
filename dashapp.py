@@ -16,6 +16,8 @@ import pandas as pd
 app = dash.Dash(__name__)
 app.title = 'Ta-Da Data'
 
+server = app.server
+
 app.layout = html.Div([
     html.H1('Ta-Da, Data!'),
     html.Br(),

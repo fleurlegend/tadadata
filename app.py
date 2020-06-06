@@ -14,20 +14,23 @@ import plotly.express as px
 import pandas as pd
 
 app = dash.Dash(__name__)
-app.title = 'Ta-Da Data'
-
-server = app.server
+app.title = "Ta-Da, Data!"
 
 app.layout = html.Div([
+    html.A(html.Button('Back to LittleHotelier'),
+    href='https://www.littlehotelier.com/?utm_source=google&utm_medium=cpc&utm_campaign=LH_G_APAC_New-Zealand_English_Exact_Brand_Core&gclid=CjwKCAjwssD0BRBIEiwA-JP5rCR69PyOXnS2zakyJLXtz2UguHXfVk2MSmsjbq-LjA6Q2q_DDDHuthoCPIUQAvD_BwE&gclsrc=aw.ds', target="_blank"),
+
+    html.A(html.Button('T&Cs'),
+    href='https://www.littlehotelier.com/data-security/', target="_blank"),
+
     html.H1('Ta-Da, Data!'),
-    html.Br(),
     html.P('Discover your data! Upload a CSV file from LittleHotelier and unearth the wealth of knowledge to benefit and enrich your business!'),
     
     dcc.Upload(
         id='upload-data',
         children=html.Div([
             'Drag and Drop or ',
-            html.A('Select CSV Files'),
+            html.A('Select CSV Files')
         ]),
         style={
             'height': '60px',
@@ -35,27 +38,18 @@ app.layout = html.Div([
             'borderWidth': '1px',
             'borderStyle': 'solid',
             'borderRadius': '5px',
+            'textAlign': 'center',
+            'margin': '10px',
             'backgroundColor' : '#ed6d47',
             'color' : 'white',
-            'textAlign': 'center',
-            'cursor':'pointer',
-            'alignItems' : 'center',
-            'marginLeft' : '200px',
-            'marginRight' : '200px'
+            'margin' : '80px',
         },
         # Allow multiple files to be uploaded
         multiple=True
     ),
     html.Div(id='output-data-upload'),
+])
 
-    html.Br(),
-
-    html.A(html.Button('Back to LittleHotelier'),
-    href='https://www.littlehotelier.com/?utm_source=google&utm_medium=cpc&utm_campaign=LH_G_APAC_New-Zealand_English_Exact_Brand_Core&gclid=CjwKCAjwssD0BRBIEiwA-JP5rCR69PyOXnS2zakyJLXtz2UguHXfVk2MSmsjbq-LjA6Q2q_DDDHuthoCPIUQAvD_BwE&gclsrc=aw.ds', target="_blank"),
-
-    html.A(html.Button('T&Cs'), 
-    href='https://www.littlehotelier.com/data-security/', target="_blank"),
-]),
 
 def parse_contents(contents, filename, date):
     content_type, content_string = contents.split(',')
@@ -73,7 +67,7 @@ def parse_contents(contents, filename, date):
         print(e)
         return html.Div([
             'Please upload a CSV file.'
-        ]),
+        ])
 
 #processes for the data (from pandas notebook)
 
@@ -124,7 +118,7 @@ def parse_contents(contents, filename, date):
 
     roomsfig.show()   
 
-    ]),
+    ])
 
     return html.Div([
         html.H5(filename),

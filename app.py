@@ -111,15 +111,12 @@ def parse_contents(contents, filename, date):
             columns = [{'name': i, 'id': i} for i in relevantdata.columns]
         ),
 
-        html.Hr(),  # horizontal line
-
     #Show visualisations
     channelfig.show(),
 
     natfig.show(),
 
-    roomsfig.show()   
-
+    roomsfig.show(),
     ])
 
     return html.Div([

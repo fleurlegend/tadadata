@@ -44,6 +44,7 @@ app.layout = html.Div([
             'backgroundColor' : '#ed6d47',
             'color' : 'white',
             'margin' : '80px',
+            'cursor' : 'pointer',
         },
         # Allow multiple files to be uploaded
         multiple=True

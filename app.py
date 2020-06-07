@@ -110,13 +110,21 @@ def parse_contents(contents, filename, date):
             data = relevantdata.mode().to_dict('records'),
             columns = [{'name': i, 'id': i} for i in relevantdata.columns]
         ),
-
+    
+    dcc.Tabs([
+        dcc.Tab(label='Tab one', children=[
+            dcc.Graph(figure=channelfig),
+        ]),
+        dcc.Tab(label='Tab two', children=[
+            dcc.Graph(figure=natfig)
+        ]),
+        dcc.Tab(label='Tab three', children=[
+            dcc.Graph(figure=roomsfig)
+        ])           
     #Show visualisations
-    channelfig.show(),
-
-    natfig.show(),
-
-    roomsfig.show(),
+    #channelfig.show(),
+    #natfig.show(),
+    #roomsfig.show(),
     ])
 
     return html.Div([

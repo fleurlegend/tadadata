@@ -14,7 +14,6 @@ import plotly.express as px
 import pandas as pd
 
 app = dash.Dash(__name__)
-server = app.server
 app.title = "Ta-Da, Data!"
 
 app.layout = html.Div([
@@ -44,7 +43,6 @@ app.layout = html.Div([
             'backgroundColor' : '#ed6d47',
             'color' : 'white',
             'margin' : '80px',
-            'cursor' : 'pointer',
         },
         # Allow multiple files to be uploaded
         multiple=True
@@ -101,6 +99,7 @@ def parse_contents(contents, filename, date):
     roomsfig = px.bar(roomsdf, x="Room Type", y="Percentage", orientation="v", title='Bar Chart to Show the Top 10 Room Types Booked')
 
 
+
 #Return = what it shows
 
     return html.Div([
@@ -110,40 +109,21 @@ def parse_contents(contents, filename, date):
             data = relevantdata.mode().to_dict('records'),
             columns = [{'name': i, 'id': i} for i in relevantdata.columns]
         ),
-    
-    dcc.Tabs([
-        dcc.Tab(label='Tab one', children=[
-            dcc.Graph(figure=channelfig),
-        ]),
-        dcc.Tab(label='Tab two', children=[
-            dcc.Graph(figure=natfig)
-        ]),
-        dcc.Tab(label='Tab three', children=[
-            dcc.Graph(figure=roomsfig)
-        ])           
+
+    html.Hr(),  # horizontal line
+
     #Show visualisations
-    #channelfig.show(),
-    #natfig.show(),
-    #roomsfig.show(),
-    ])
+    dcc.Graph(figure=channelfig),
 
-    return html.Div([
-        html.H5(filename),
-        html.H6(datetime.datetime.fromtimestamp(date)),
+    html.Hr(),  # horizontal line
 
-        dash_table.DataTable(
-            data = relevantdata.mode().to_dict('records'),
-            columns = [{'name': i, 'id': i} for i in relevantdata.columns]
-        ),
+    dcc.Graph(figure=natfig),
 
-        html.Hr(),  # horizontal line
+    html.Hr(),  # horizontal line
 
-        # For debugging, display the raw contents provided by the web browser
-        html.Div('Raw Content'),
-        html.Pre(contents[0:200] + '...', style={
-            'whiteSpace': 'pre-wrap',
-            'wordBreak': 'break-all'
-        })
+    dcc.Graph(figure=roomsfig),
+
+    html.Hr(),  # horizontal line
     ])
 
 @app.callback(Output('output-data-upload', 'children'),

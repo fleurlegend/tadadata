@@ -103,7 +103,7 @@ def parse_contents(contents, filename, date):
 #Return = what it shows
 
     return html.Div([
-        html.H5('Modal Data From Your CSV.'),
+        html.H2('Modal Data From Your CSV.'),
 
         dash_table.DataTable(
             data = relevantdata.mode().to_dict('records'),
@@ -111,19 +111,21 @@ def parse_contents(contents, filename, date):
         ),
 
     html.Hr(),  # horizontal line
+    html.H3('See below charts and tables made from your data file. Explore trends and patterns or upload a new file.'),
+    html.Hr(),
 
     #Show visualisations
     dcc.Graph(figure=channelfig),
 
-    html.Hr(),  # horizontal line
+    html.Br(),
 
     dcc.Graph(figure=natfig),
 
-    html.Hr(),  # horizontal line
+    html.Br(),
 
     dcc.Graph(figure=roomsfig),
 
-    html.Hr(),  # horizontal line
+    html.Br(),
     ])
 
 @app.callback(Output('output-data-upload', 'children'),

@@ -14,8 +14,9 @@ import plotly.express as px
 import pandas as pd
 
 app = dash.Dash(__name__)
-app.title = "Ta-Da, Data!"
 server = app.server
+
+app.title = "Ta-Da, Data!"
 
 app.layout = html.Div([
     html.A(html.Button('Back to LittleHotelier'),
